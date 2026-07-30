@@ -22,7 +22,9 @@ def plot_sweeps(sweeps: list[dict], path) -> None:
                                           ("p95_trans_mm", "p95 translation error (mm)")]):
             ax = axes[i, j]
             for m in methods:
-                pts = sorted((float(r["level"]), float(r[key])) for r in sub if r["method"] == m)
+                # the noise-free level is exact (checked separately) and would flatten a log axis
+                pts = sorted((float(r["level"]), float(r[key])) for r in sub
+                             if r["method"] == m and not (fam == "noise" and float(r["level"]) == 0))
                 if not pts:
                     continue
                 xs, ys = zip(*pts)

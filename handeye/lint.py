@@ -17,9 +17,9 @@ from .io import PoseSet
 
 # Chosen on the calibration split by `handeye bench` (results/lint_thresholds.json).
 DEFAULT_THRESHOLDS = {
-    "axis_diversity": 0.05,       # warn if s2/s1 of stacked rotation vectors is below
-    "convention_log_ratio": 0.5,  # warn if log10(cost(declared) / cost(best)) is above
-    "outlier_score": 6.0,         # flag samples whose robust normalised residual is above
+    "axis_diversity": 0.052,      # warn if s2/s1 of stacked rotation vectors is below
+    "convention_log_ratio": 0.63, # warn if log10(cost(declared) / cost(best)) is above
+    "outlier_score": 4.17,        # flag samples whose robust normalised residual is above
 }
 
 ROBOT_FIXES = {"as_given": lambda T: T, "inverted": se3.inv, "transposed": se3.transpose_rotation}

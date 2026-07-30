@@ -1,0 +1,4 @@
+warning,unit,threshold,precision,recall,tp,fp,fn,positives,negatives
+degenerate-rotation-axes,scenario,0.0521752,1,1,176,0,0,176,1824
+convention-mismatch,scenario,0.625743,1,1,315,0,0,315,1685
+outlier-samples,sample,4.167,1,0.996613,2060,0,7,2067,32851
