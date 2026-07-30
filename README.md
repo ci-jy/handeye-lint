@@ -4,10 +4,9 @@ A Python library and CLI for robotics and vision engineers that checks recorded 
 
 ## Results
 
-- **20x lower worst-case rotation error when some poses are bad:** 95th-percentile error 1.23° vs 24.7° for the best OpenCV method (Horaud) on 485 scenarios with 10–40% corrupted target poses; translation 12.9 mm vs 176 mm.
-- **Inverted or transposed poses detected and fixed automatically:** 95th-percentile rotation error 0.27° vs 166° for the best of OpenCV's five `calibrateHandEye` methods on 315 scenarios with a planted convention fault.
-- **Lint warnings with 100% precision on 2,000 held-out scenarios:** degenerate pose sets and convention faults at 100% precision and 100% recall; outlier poses at 100% precision and 99.7% recall (thresholds chosen on a separate 1,000-scenario split).
-- **No accuracy cost on clean data:** 95th-percentile rotation error 1.67° vs 1.67° for the best OpenCV method, translation 11.8 mm vs 13.0 mm, on 619 noise-only scenarios.
+- **20x lower worst-case rotation error with 10-40% bad poses:** 1.23° vs 24.7° (95th percentile) for the best OpenCV `calibrateHandEye` method, using RANSAC over motion pairs and robust SE(3) refinement.
+- **Inverted or transposed poses caught and fixed automatically:** worst-case rotation error 0.27° vs 166° for OpenCV's methods, by testing which of 9 pose conventions makes the motion pairs agree.
+- **Bad pose sets flagged with 100% precision on 2,000 held-out scenarios:** degenerate motions and swapped frames, plus individual outlier poses at 99.7% recall, with thresholds set on a separate split.
 
 ![95th-percentile error vs pose noise, outlier fraction and viewpoint diversity for the five OpenCV methods and the robust solver](docs/error_sweeps.png)
 
@@ -132,7 +131,9 @@ Lint warnings on the held-out test split:
 | convention-mismatch | scenario | 0.626 | 1.000 | 1.000 | 315 | 0 | 0 |
 | outlier-samples | sample | 4.17 | 1.000 | 0.997 | 2060 | 0 | 7 |
 
-Among detected convention faults, the specific fault (which input, inverted or transposed) was
+On noise-only scenarios there is no accuracy cost: 95th-percentile rotation error 1.67° vs 1.67° for
+the best OpenCV method (Andreff) and translation 11.8 mm vs 13.0 mm (Park). Among detected
+convention faults, the specific fault (which input, inverted or transposed) was
 identified correctly in 100% of cases. With noise-free poses the robust solver recovers X to
 better than 1e-3° and 1e-3 mm. On parallel-axis sets every method, including this one, has large
 translation error, which is exactly why that case is a lint warning rather than something a
