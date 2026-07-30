@@ -44,7 +44,9 @@ def exp_rot(v: np.ndarray) -> np.ndarray:
 def rot_angle(R: np.ndarray) -> np.ndarray:
     """Rotation angle in radians, robust near 0 and pi."""
     c = (np.trace(R, axis1=-2, axis2=-1) - 1.0) / 2.0
-    return np.arccos(np.clip(c, -1.0, 1.0))
+    w = np.stack([R[..., 2, 1] - R[..., 1, 2], R[..., 0, 2] - R[..., 2, 0],
+                  R[..., 1, 0] - R[..., 0, 1]], axis=-1)
+    return np.arctan2(0.5 * np.linalg.norm(w, axis=-1), c)
 
 
 def rotation_error_deg(R_est: np.ndarray, R_true: np.ndarray) -> np.ndarray:
