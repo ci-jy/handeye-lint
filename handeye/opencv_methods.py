@@ -7,6 +7,11 @@ import numpy as np
 from . import se3
 from .io import PoseSet
 
+try:  # OpenCV logs an ERROR line for every degenerate Tsai input; failures are reported anyway
+    cv2.utils.logging.setLogLevel(cv2.utils.logging.LOG_LEVEL_SILENT)
+except AttributeError:
+    pass
+
 METHODS = {
     "tsai": cv2.CALIB_HAND_EYE_TSAI,
     "park": cv2.CALIB_HAND_EYE_PARK,
