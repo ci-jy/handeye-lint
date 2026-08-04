@@ -192,3 +192,5 @@ inversion symmetry, the parallel-axis warning, JSON/CSV round trips, the CLI and
   rotation or poorly spread translations, and the solver does not report a covariance.
 - No marker detection, image processing, ROS integration or robot-world (AX=YB with unknown target
   pose) calibration beyond what the joint refinement already estimates.
+
+Project period: 2026-07-30 to 2026-08-04.
