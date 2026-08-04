@@ -150,6 +150,10 @@ warning reaches precision and recall ≥ 0.9 with ≥ 90% correct fault identifi
 python3 -m pytest -q
 ```
 
+If the interpreter you test with already has some dependencies but not others (commonly OpenCV),
+`scripts/install_local_deps.sh [python]` installs only the missing ones into a git-ignored `.deps/`
+directory, which the package appends to `sys.path`; the interpreter's own environment is untouched.
+
 25 tests, including Hypothesis property tests over random seeds and setups: exact recovery from
 noise-free random poses (4–20 poses, both setups), exactness of the two-pair minimal solver,
 invariance of X to re-labelling the robot base and target frames, robustness to 10–30% outliers

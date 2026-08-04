@@ -4,7 +4,7 @@
   "seed": 0,
   "thresholds": {
     "axis_diversity": 0.052175215342045306,
-    "convention_log_ratio": 0.6257429131984078,
+    "convention_log_ratio": 0.6257429131983655,
     "outlier_score": 4.167
   },
   "headlines": [
@@ -14,8 +14,8 @@
       "opencv_p95_rot_deg": 24.664926591960818,
       "best_opencv_trans": "horaud",
       "opencv_p95_trans_mm": 175.77687934903037,
-      "ours_p95_rot_deg": 1.2342286603487422,
-      "ours_p95_trans_mm": 12.89148928221093
+      "ours_p95_rot_deg": 1.234228732877613,
+      "ours_p95_trans_mm": 12.891489576375653
     },
     {
       "family": "convention",
@@ -23,8 +23,8 @@
       "opencv_p95_rot_deg": 165.6347961457361,
       "best_opencv_trans": "park",
       "opencv_p95_trans_mm": 1286.0436083033646,
-      "ours_p95_rot_deg": 0.27382884954567066,
-      "ours_p95_trans_mm": 2.0108654323814705
+      "ours_p95_rot_deg": 0.27382882386635665,
+      "ours_p95_trans_mm": 2.010864824133466
     },
     {
       "family": "noise",
@@ -32,8 +32,8 @@
       "opencv_p95_rot_deg": 1.669482055510792,
       "best_opencv_trans": "park",
       "opencv_p95_trans_mm": 12.965513593841697,
-      "ours_p95_rot_deg": 1.6705417688708732,
-      "ours_p95_trans_mm": 11.794550208076483
+      "ours_p95_rot_deg": 1.6705414473211868,
+      "ours_p95_trans_mm": 11.794550274140187
     }
   ],
   "lint": [
@@ -52,7 +52,7 @@
     {
       "warning": "convention-mismatch",
       "unit": "scenario",
-      "threshold": 0.6257429131984078,
+      "threshold": 0.6257429131983655,
       "precision": 1.0,
       "recall": 1.0,
       "tp": 315,
